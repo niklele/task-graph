@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'graphviz'
 
-get '/' do
+get '/testgraph' do
     # Create a new graph
     g = GraphViz.new( :G, :type => :digraph )
 
@@ -16,4 +16,8 @@ get '/' do
     # g.output( :png => "hello_world.png" )
     return g.output( :none => String)
 
+end
+
+get '/' do
+    send_file File.join(settings.public_folder, 'index.html')
 end
